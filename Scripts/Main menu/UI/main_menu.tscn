@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5nkif0n2jpwr"]
+
+[ext_resource type="Texture2D" uid="uid://be6x35etdwdbl" path="res://UI/bg11.png" id="1_d8nwk"]
+[ext_resource type="FontFile" uid="uid://47huo5el1y82" path="res://UI/Decaydence.otf" id="2_4cwpn"]
+[ext_resource type="FontFile" uid="uid://b5ongaxi2xpsq" path="res://UI/BLACEB__.TTF" id="2_tk8dj"]
+[ext_resource type="FontFile" uid="uid://dr2g2w2tq1qir" path="res://UI/FIGHTT3_.ttf" id="3_4cwpn"]
+[ext_resource type="FontFile" uid="uid://c84go0lg02ytg" path="res://UI/Barbarian.ttf" id="3_f40uw"]
+[ext_resource type="Script" uid="uid://00ww8ck2byuo" path="res://UI/button_1.gd" id="6_8ctay"]
+[ext_resource type="Script" uid="uid://i1542qxig4ew" path="res://UI/quit.gd" id="7_ev3b6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8nwk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cwpn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f40uw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg11" type="Sprite2D" parent="."]
+position = Vector2(657, 160)
+scale = Vector2(0.599479, 0.597222)
+texture = ExtResource("1_d8nwk")
+offset = Vector2(-131.781, 274.605)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = -31.0
+offset_right = 587.0
+offset_bottom = 82.0
+scale = Vector2(1.86732, 2.21095)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_f40uw")
+theme_override_font_sizes/font_size = 100
+text = "Blades"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 152.0
+offset_right = 633.0
+offset_bottom = 217.0
+scale = Vector2(1.31274, 1.2327)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4cwpn")
+theme_override_font_sizes/font_size = 50
+text = "Against"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 241.0
+offset_right = 792.0
+offset_bottom = 306.0
+scale = Vector2(0.95414, 1.2327)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4cwpn")
+theme_override_font_sizes/font_size = 50
+text = "Machines"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 353.0
+offset_right = 714.0
+offset_bottom = 523.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.977897, 0.971418, 0.976359, 1)
+theme_override_colors/font_outline_color = Color(0.223266, 0.220947, 0.327554, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tk8dj")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_d8nwk")
+text = "--START--"
+script = ExtResource("6_8ctay")
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tk8dj")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_4cwpn")
+text = "--SETTINGS--
+"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tk8dj")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_f40uw")
+text = "--QUIT--
+"
+script = ExtResource("7_ev3b6")
+
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="VBoxContainer/Start" method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Start" method="_on_quit_pressed"]

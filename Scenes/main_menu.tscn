@@ -1,0 +1,148 @@
+[gd_scene load_steps=15 format=3 uid="uid://bb4d6m4teau0s"]
+
+[ext_resource type="Script" uid="uid://bx1jfyt8taan5" path="res://main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://dbei0pxhap1ly" path="res://Assets/bg11.png" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://bp58uq735j2w1" path="res://Assets/Fonts/Enchanted Land.otf" id="3_1ehe0"]
+[ext_resource type="FontFile" uid="uid://teljycsysopq" path="res://Assets/Fonts/Barbarian.ttf" id="4_n45e2"]
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="5_opfnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0ys"]
+bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhxw7"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trj04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hvj"]
+bg_color = Color(0.20152655, 0.20152661, 0.20152646, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr1f0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1dhk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5egv6"]
+bg_color = Color(0.20152646, 0.20152664, 0.20152646, 1)
+
+[node name="Main menu" type="Node2D"]
+script = ExtResource("1_28flt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(962, 538.00006)
+scale = Vector2(0.9986979, 0.9958332)
+texture = ExtResource("2_48xlc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 410.0
+offset_top = 136.0
+offset_right = 1560.0
+offset_bottom = 776.0
+
+[node name="Start" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.4314236
+anchor_top = -0.35423198
+anchor_right = 1.2
+anchor_bottom = 1.2110001
+offset_left = 954.0
+offset_top = 513.0
+offset_right = -693.4
+offset_bottom = -393.12775
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_opfnp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cp0ys")
+action_mode = 0
+text = "--Play--"
+metadata/_edit_use_anchors_ = true
+
+[node name="Settings" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.4435764
+anchor_top = -0.5082241
+anchor_right = 1.437
+anchor_bottom = 1.4210001
+offset_left = 983.0
+offset_top = 715.247
+offset_right = -976.4241
+offset_bottom = -422.8451
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_yhxw7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_trj04")
+theme_override_styles/hover = SubResource("StyleBoxFlat_16hvj")
+action_mode = 0
+text = "--Settings--"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.3940972
+anchor_top = -0.5897811
+anchor_right = 1.493
+anchor_bottom = 1.4210001
+offset_left = 947.0
+offset_top = 874.28033
+offset_right = -1061.936
+offset_bottom = -320.87842
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_vr1f0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t1dhk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5egv6")
+action_mode = 0
+text = "--Quit--"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 589.0
+offset_top = 64.0
+offset_right = 1573.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_n45e2")
+theme_override_font_sizes/font_size = 150
+text = "Blades>"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 860.0
+offset_top = 204.0
+offset_right = 1224.0
+offset_bottom = 321.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+text = "AGAINST"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 754.0
+offset_top = 291.0
+offset_right = 1414.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_opfnp")
+theme_override_font_sizes/font_size = 100
+text = "MACHINES"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Control/Start" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Settings" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8yaw3t7ahf44"]
+
+[ext_resource type="Script" uid="uid://cck3jlntuklrq" path="res://quit.gd" id="1_43e7m"]
+[ext_resource type="Texture2D" uid="uid://cidecwprxl5y" path="res://UI/japanese.png" id="2_vco7o"]
+[ext_resource type="FontFile" uid="uid://biovrnv4m6rkw" path="res://UI/Black Mustang.ttf" id="3_xsll0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07qlu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3jb3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0117647)
+
+[node name="quit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = 1.0
+offset_right = -44.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43e7m")
+
+[node name="Japanese" type="Sprite2D" parent="."]
+position = Vector2(622, 322)
+scale = Vector2(0.601042, 0.596296)
+texture = ExtResource("2_vco7o")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 325.0
+offset_top = 137.0
+offset_right = 901.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.588012, 0.000274153, 0.594103, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_xsll0")
+theme_override_font_sizes/font_size = 50
+text = "ARE YOU SURE YOU WANT TO QUIT?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 327.0
+offset_right = 604.0
+offset_bottom = 405.0
+scale = Vector2(2.19179, 2.37807)
+
+[node name="Yes" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.796243, 0.796243, 0.796243, 1)
+theme_override_colors/font_outline_color = Color(0.120233, 0.244188, 0.15835, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_xsll0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_07qlu")
+text = "YES"
+
+[node name="No" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_pressed_color = Color(0.920995, 0.920995, 0.920995, 1)
+theme_override_colors/font_outline_color = Color(0.121569, 0.243137, 0.156863, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_xsll0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_x3jb3")
+text = "NO"
+
+[connection signal="pressed" from="VBoxContainer/Yes" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="VBoxContainer/No" to="." method="_on_no_pressed"]

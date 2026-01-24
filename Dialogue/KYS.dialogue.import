@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ds3le6eo5g5ty"
+path="res://.godot/imported/KYS.dialogue-f0bd3fc9de641545aa50bf393519d3b7.tres"
+
+[deps]
+
+source_file="res://Dialogue/KYS.dialogue"
+dest_files=["res://.godot/imported/KYS.dialogue-f0bd3fc9de641545aa50bf393519d3b7.tres"]
+
+[params]
+
+defaults=true

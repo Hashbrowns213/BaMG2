@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxbjanh2t6s6x"]
+
+[ext_resource type="Texture2D" uid="uid://besrlhqmoi76l" path="res://Assets/Free-City-Trader-Character-Sprite-Sheets-Pixel-Art/Trader_1/Idle.png" id="2_gejva"]
+[ext_resource type="PackedScene" uid="uid://b24q1rmofeu16" path="res://Scenes/Interactables.tscn" id="4_gejva"]
+[ext_resource type="Resource" uid="uid://cx31idvmpemre" path="res://Dialogue/Main.dialogue" id="5_ileeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7bvo"]
+atlas = ExtResource("2_gejva")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gejva"]
+atlas = ExtResource("2_gejva")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvqg6"]
+atlas = ExtResource("2_gejva")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ileeb"]
+atlas = ExtResource("2_gejva")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c57i"]
+atlas = ExtResource("2_gejva")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d01td"]
+atlas = ExtResource("2_gejva")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v745g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7bvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gejva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvqg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ileeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c57i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d01td")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gejva"]
+radius = 25.317978
+
+[node name="Trader" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-31.999998, 29)
+scale = Vector2(0.50000006, 0.546875)
+sprite_frames = SubResource("SpriteFrames_v745g")
+autoplay = "default"
+frame_progress = 0.31927058
+flip_h = true
+
+[node name="Interactables" parent="." groups=["interactable"] instance=ExtResource("4_gejva")]
+collision_mask = 1
+dialogue_resource = ExtResource("5_ileeb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables"]
+position = Vector2(-29, 42)
+shape = SubResource("CircleShape2D_gejva")

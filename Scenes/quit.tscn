@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cscr37hckkxys"]
+
+[ext_resource type="Script" uid="uid://otmq6qlm0dnk" path="res://Scenes/quit.gd" id="1_2l352"]
+[ext_resource type="Texture2D" uid="uid://drwnvk63prdon" path="res://Assets/japanese.png" id="1_woojn"]
+[ext_resource type="FontFile" uid="uid://bp58uq735j2w1" path="res://Assets/Fonts/Enchanted Land.otf" id="3_pw5xw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26s04"]
+bg_color = Color(0, 0, 0, 0.57254905)
+
+[node name="Quit" type="Node2D"]
+script = ExtResource("1_2l352")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(971.5, 552.5)
+scale = Vector2(1.0046875, 1.0064815)
+texture = ExtResource("1_woojn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 385.0
+offset_top = 279.0
+offset_right = 1568.0
+offset_bottom = 454.0
+theme_override_fonts/font = ExtResource("3_pw5xw")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_26s04")
+text = "Are you sure you want to quit?"
+
+[node name="Yes" type="Button" parent="."]
+offset_left = 577.0
+offset_top = 521.0
+offset_right = 945.0
+offset_bottom = 714.0
+theme_override_font_sizes/font_size = 100
+text = "YES"
+
+[node name="No" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = -1.9460001
+anchor_top = -3.676
+anchor_right = -1.9460001
+anchor_bottom = -3.676
+offset_left = 1030.0
+offset_top = 523.0
+offset_right = 1405.0
+offset_bottom = 713.0
+theme_override_font_sizes/font_size = 100
+text = "NO"
+
+[connection signal="pressed" from="Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="No" to="." method="_on_no_pressed"]

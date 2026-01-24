@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1x41bfordm76"]
+
+[ext_resource type="Script" uid="uid://cfu0ac50g7my8" path="res://Scenes/settings.gd" id="1_aaqfp"]
+[ext_resource type="Shader" uid="uid://cfqt3ikkbwwij" path="res://Scenes/settings.gdshader" id="1_i44u3"]
+[ext_resource type="Texture2D" uid="uid://cvg566sn8sq0i" path="res://Assets/bg2k.png" id="2_lhmql"]
+[ext_resource type="FontFile" uid="uid://cmt8sfovh3uyw" path="res://Assets/Fonts/Blackletter.ttf" id="3_lhmql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaqfp"]
+shader = ExtResource("1_i44u3")
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_aaqfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_aaqfp")
+position = Vector2(968, 553)
+scale = Vector2(1.0010418, 1.0037038)
+texture = ExtResource("2_lhmql")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1947.0
+offset_bottom = 1111.0
+color = Color(0.21176471, 0.21176471, 0.21176471, 0.6313726)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 452.0
+offset_top = 382.0
+offset_right = 1537.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+
+[node name="Sound" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lhmql")
+theme_override_font_sizes/font_size = 60
+text = "Sound"
+
+[node name="Controls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lhmql")
+theme_override_font_sizes/font_size = 60
+text = "Controls"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lhmql")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer/Sound" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_button_3_pressed"]

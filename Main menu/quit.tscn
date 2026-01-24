@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8yaw3t7ahf44"]
+
+[ext_resource type="PackedScene" uid="uid://c8yaw3t7ahf44" path="res://quit.tscn" id="1_2xaj3"]
+
+[node name="quit" instance=ExtResource("1_2xaj3")]
+
+[node name="Label" parent="." index="1"]
+layout_mode = 0

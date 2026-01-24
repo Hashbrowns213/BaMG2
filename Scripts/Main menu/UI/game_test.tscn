@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbedemyx0pp8c"]
+
+[ext_resource type="Texture2D" uid="uid://c1r4pnjekchme" path="res://icon.svg" id="1_xl6ak"]
+[ext_resource type="FontFile" uid="uid://biovrnv4m6rkw" path="res://UI/Black Mustang.ttf" id="2_gwj7t"]
+[ext_resource type="Script" uid="uid://ctx4oarnrog2h" path="res://UI/game_menu.gd" id="3_go4oj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_go4oj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="game_test" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(575, 337)
+scale = Vector2(2.01953, 1.31641)
+texture = ExtResource("1_xl6ak")
+
+[node name="game_menu" type="Button" parent="."]
+offset_left = 793.0
+offset_top = 53.0
+offset_right = 1072.0
+offset_bottom = 134.0
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0.243137)
+theme_override_colors/icon_hover_color = Color(0.75339, 2.38247e-06, 5.77569e-07, 1)
+theme_override_colors/icon_pressed_color = Color(0.937423, 0.873395, 0.922861, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_gwj7t")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_go4oj")
+text = "MAIN MENU"
+script = ExtResource("3_go4oj")
+
+[connection signal="pressed" from="game_menu" to="game_menu" method="_on_pressed"]

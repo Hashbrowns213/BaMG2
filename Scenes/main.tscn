@@ -879,7 +879,7 @@ offset_top = -76.0
 offset_right = -482.0
 offset_bottom = -53.0
 theme_override_fonts/font = ExtResource("7_wsu2k")
-text = "[J] or [Right-Click] To Attack"
+text = "[Right-Click] To Attack"
 
 [node name="Label4" type="Label" parent="TileMap/Ground"]
 offset_left = 260.0
@@ -888,14 +888,13 @@ offset_right = 472.0
 offset_bottom = -62.666668
 theme_override_fonts/font = ExtResource("7_wsu2k")
 text = "           [E] To interact
-[J] or [Right-Click] To Continue"
+    [Right-Click] To Continue"
 
 [node name="Layer1" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true
 tile_set = SubResource("TileSet_d1ilt")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-top_level = true
 position = Vector2(-1523, -23)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

@@ -841,6 +841,15 @@ pattern_4 = SubResource("TileMapPattern_d1ilt")
 
 [node name="Main" type="Node2D"]
 
+[node name="DarkNinja" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1194, -11)
+
+[node name="DarkNinja2" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1443, -11)
+
+[node name="DarkNinja3" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1693, -11)
+
 [node name="HUD" parent="." instance=ExtResource("1_k12tt")]
 
 [node name="TileMap" type="Node" parent="."]
@@ -928,15 +937,6 @@ position = Vector2(136, -46)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(-223, 200)
 shape = SubResource("WorldBoundaryShape2D_lquwl")
-
-[node name="DarkNinja" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(1194, -11)
-
-[node name="DarkNinja2" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(1443, -11)
-
-[node name="DarkNinja3" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(1693, -11)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

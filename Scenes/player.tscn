@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://ctf2d4n8p5psm"]
+[gd_scene format=3 uid="uid://ctf2d4n8p5psm"]
 
 [ext_resource type="Script" uid="uid://xbilr0oxnrc0" path="res://Scripts/Trueplayer.gd" id="1_8erm5"]
 [ext_resource type="Texture2D" uid="uid://bk6fxrstug3xy" path="res://Assets/FreeKnight_v1/Colour2/NoOutline/120x80_PNGSheets/_Attack.png" id="2_8erm5"]
@@ -699,49 +699,49 @@ size = Vector2(61, 37)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gymyn"]
 radius = 23.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1573866012 groups=["player"]]
 top_level = true
 collision_layer = 3
 collision_mask = 15
 script = ExtResource("1_8erm5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1390681840]
 position = Vector2(6, -21)
 scale = Vector2(0.983333, 1)
 sprite_frames = SubResource("SpriteFrames_tx1dd")
 animation = &"Idle"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tx1dd")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1648413757]
+libraries/ = SubResource("AnimationLibrary_tx1dd")
 playback_auto_capture = false
 speed_scale = 1.17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1623754145]
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_gymyn")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=279150021 groups=["player"]]
 position = Vector2(1, 0)
+collision_layer = 17
+collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1601787917]
 position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_8erm5")
 debug_color = Color(1, 0.12941177, 0.21568628, 0.41960785)
 
-[node name="Hitbox" type="Area2D" parent="." groups=["player_hitbox"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=520665914 groups=["player_hitbox"]]
 position = Vector2(-2.86102e-06, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1347635349]
 position = Vector2(21.500002, 1)
 shape = SubResource("RectangleShape2D_pu2lt")
 debug_color = Color(0.22745098, 0.30980393, 0.8627451, 0.52156866)
 
-[node name="Interactabledetector" type="Area2D" parent="."]
+[node name="Interactabledetector" type="Area2D" parent="." unique_id=651184582]
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactabledetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactabledetector" unique_id=1189958586]
 shape = SubResource("CircleShape2D_gymyn")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

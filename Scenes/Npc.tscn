@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxbjanh2t6s6x"]
+[gd_scene format=3 uid="uid://dxbjanh2t6s6x"]
 
 [ext_resource type="Texture2D" uid="uid://besrlhqmoi76l" path="res://Assets/Free-City-Trader-Character-Sprite-Sheets-Pixel-Art/Trader_1/Idle.png" id="2_gejva"]
 [ext_resource type="PackedScene" uid="uid://b24q1rmofeu16" path="res://Scenes/Interactables.tscn" id="4_gejva"]
@@ -57,9 +57,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_gejva"]
 radius = 25.317978
 
-[node name="Trader" type="Node2D"]
+[node name="Trader" type="Node2D" unique_id=931357195]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1400947743]
 position = Vector2(-31.999998, 29)
 scale = Vector2(0.50000006, 0.546875)
 sprite_frames = SubResource("SpriteFrames_v745g")
@@ -67,10 +67,10 @@ autoplay = "default"
 frame_progress = 0.31927058
 flip_h = true
 
-[node name="Interactables" parent="." groups=["interactable"] instance=ExtResource("4_gejva")]
+[node name="Interactables" parent="." unique_id=724194704 groups=["interactable"] instance=ExtResource("4_gejva")]
 collision_mask = 1
 dialogue_resource = ExtResource("5_ileeb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables" unique_id=1844424039]
 position = Vector2(-29, 42)
 shape = SubResource("CircleShape2D_gejva")

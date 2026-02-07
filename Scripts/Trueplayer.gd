@@ -164,7 +164,7 @@ func _die() -> void:
 	else:
 		# Full death: reset lives for next run
 		print("GAME OVER")
-		Stats.player_stats["lives"] = 3   # ✅ Correct assignment
+		Stats.player_stats["lives"] = 3   
 		get_tree().reload_current_scene()
 
 # --- Respawn ---

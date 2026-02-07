@@ -9,7 +9,7 @@ extends CharacterBody2D
 # ✅ PER-ENEMY STATS (OPTION 1)
 @export var max_health := 5
 @export var attack := 25
-
+@export var coin_scene: PackedScene
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionArea
@@ -162,4 +162,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _die() -> void:
 	print("Enemy died")
+	if  coin_scene and randf() < 0.67:
+		var coin = coin_scene.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
 	queue_free()

@@ -1,12 +1,14 @@
 ~ start
-Trader: Foul Tarnished
+Trader: Knight
 Trader: In search of answers.
 - Where am i?
-	Trader: Ohio... 
+	Trader: You are far into the distant future, my knight friend. 
+	Trader: You must learn the ways of the machines to beat them and defeat their master
+	Trader: I will guide you throughout your journey, go forth
 	=> END
  - What year is it?
 	Trader: 2067.
 	Trader: You've been asleep for a very long time, My friend.
-	Trader: Go forth to the path of becoming elden lord.
 	=> END
+- 
 => END

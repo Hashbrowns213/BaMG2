@@ -1,0 +1,26 @@
+~ Puzzle
+Knight: This door seems to be broken, how am i gonna get through?
+Trader: Hello there knight, this door requires advanced understanding of machines. Luckily, im here to help you.
+Trader: Machines understand words differently depending on their language, this door seems to be coded in Java.
+Trader: In Java, numbers are referred to Integers, sentences are Strings, Booleans or Bool are True or False, Char is a single letter, digit, punctuation mark, or symbol, and float are numbers with fractions.
+Trader: I've told you the Information you require, for now. Try to fix this door to proceed.
+Knight: I am in your debt random person. now, let's try to solve this.
+~ Question 
+Door:___ a = 7; ___ b = 4; ___ result = a + b * ?; System.out.println(result);
+- Int
+	set State.door_correct = "True"
+	Knight: This seems correct
+- Float
+	Door: Wrong
+	Knight: I don't think this is right.
+	=> Question 
+- String
+	Door: Wrong
+	Knight: Not it.
+	=> Question 
+- Bool
+	Door: Wrong
+	Knight: Okay, i can't be THAT stupid.
+	=> Question 
+- Exit
+	=> END!

@@ -1,14 +1,16 @@
 ~ start
 Trader: Knight
 Trader: In search of answers.
+Trader: I am the wandering trader
 - Where am i?
 	Trader: You are far into the distant future, my knight friend. 
-	Trader: You must learn the ways of the machines to beat them and defeat their master
+	Trader: You must learn the ways of the machines to beat them and defeat their master.
+	Trader: Here, take this device and place it in your ear, i will be able to communicate with you at all times.
 	Trader: I will guide you throughout your journey, go forth
 	=> END
  - What year is it?
 	Trader: 2067.
 	Trader: You've been asleep for a very long time, My friend.
 	=> END
-- 
+
 => END

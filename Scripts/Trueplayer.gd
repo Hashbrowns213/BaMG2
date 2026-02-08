@@ -37,8 +37,8 @@ func _ready() -> void:
 		Interaction.area_entered.connect(_on_interaction_area_entered)
 		Interaction.area_exited.connect(_on_interaction_area_exited)
 
-	# Reset health properly (HUD will update via signal)
 	Stats.reset_health()
+
 
 # --- Interaction ---
 func _on_interaction_area_entered(area: Area2D) -> void:
@@ -81,8 +81,10 @@ func _physics_process(delta: float) -> void:
 
 	_update_hit_and_hurtbox_flip()
 	move_and_slide()
+
 	if Input.is_action_just_pressed("kys"):
 		_die()
+
 	if Input.is_action_just_pressed("Interact") and current_interactable:
 		current_interactable.interact()
 
@@ -122,6 +124,8 @@ func _on_animation_finished(anim_name: StringName) -> void:
 			attack_index = 0
 		"Hit":
 			is_hit = false
+			is_attacking = false
+			attack_index = 0
 		"Death":
 			death_timer.start()
 
@@ -142,6 +146,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 	if area.is_in_group("enemy_hitbox"):
 		i_frame_timer = IFRAME_DURATION
+
+		# 🔥 IMPORTANT FIX — cancel attack when hit
+		is_attacking = false
+		attack_index = 0
+		hitboxbox.disabled = true
+
 		is_hit = true
 		anim.play("Hit")
 
@@ -149,6 +159,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 		if Stats.player_stats["health"] <= 0:
 			_die()
+
 
 func _die() -> void:
 	is_dead = true
@@ -159,27 +170,25 @@ func _die() -> void:
 	anim.play("Death")
 
 	if Stats.player_stats["lives"] > 0:
-		# Respawn normally
 		death_timer.start()
 	else:
-		# Full death: reset lives for next run
 		print("GAME OVER")
-		Stats.player_stats["lives"] = 3   
+		Stats.player_stats["lives"] = 3
 		get_tree().reload_current_scene()
+
 
 # --- Respawn ---
 func _on_respawn_timeout() -> void:
-	# Reset health
 	Stats.reset_health()
 
-	# Reset position to spawn point
 	if spawn_point:
 		global_position = spawn_point.global_position
 
-	# Re-enable hitboxes and groups
 	Hitbox.monitoring = true
 	Hurtbox.monitoring = true
 	add_to_group("player")
 
 	is_dead = false
 	is_hit = false
+	is_attacking = false
+	attack_index = 0

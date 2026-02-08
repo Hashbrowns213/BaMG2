@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cw803uu7u3elh"]
 
 [ext_resource type="Texture2D" uid="uid://c5qjlkmqng2bb" path="res://Assets/Doors/dooorr.png" id="1_xrtf2"]
+[ext_resource type="Script" uid="uid://1lq6s05vcniy" path="res://Scenes/puzzle_door.gd" id="1_ycy7j"]
+[ext_resource type="Resource" uid="uid://bvuv2l06fkjeh" path="res://Dialogue/PuzzleDoor.dialogue" id="2_wvso1"]
 [ext_resource type="PackedScene" uid="uid://b24q1rmofeu16" path="res://Scenes/Interactables.tscn" id="2_ycy7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvso1"]
@@ -111,6 +113,58 @@ region = Rect2(1600, 0, 64, 64)
 atlas = ExtResource("1_xrtf2")
 region = Rect2(1664, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_60rs3"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjedd"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoeaq"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44tyl"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_savpj"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw0o5"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8ol6"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m58tb"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh5qy"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pune"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqlr2"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o16e5"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35lxt"]
+atlas = ExtResource("1_xrtf2")
+region = Rect2(768, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_60rs3"]
 animations = [{
 "frames": [{
@@ -195,22 +249,72 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_60tk4")
 }],
-"loop": true,
-"name": &"default",
+"loop": false,
+"name": &"Open",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60rs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjedd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoeaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44tyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_savpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw0o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8ol6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m58tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh5qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pune")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqlr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o16e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35lxt")
+}],
+"loop": false,
+"name": &"closed",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvso1"]
+size = Vector2(37, 39)
 
 [node name="Puzzle Door" type="Node2D" unique_id=1228352101]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1380806060]
 sprite_frames = SubResource("SpriteFrames_60rs3")
+animation = &"closed"
+autoplay = "closed"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1097011580]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=184717605]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=699869914]
-
-[node name="Interactables" parent="." unique_id=1009831571 instance=ExtResource("2_ycy7j")]
+[node name="Interactables" parent="." unique_id=1009831571 groups=["interactable"] instance=ExtResource("2_ycy7j")]
+script = ExtResource("1_ycy7j")
+dialogue_resource = ExtResource("2_wvso1")
+next_scene = "arena"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables" unique_id=1938290984]
+position = Vector2(-8.5, 9.5)
+shape = SubResource("RectangleShape2D_wvso1")

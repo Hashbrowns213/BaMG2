@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb4d6m4teau0s"]
+[gd_scene format=3 uid="uid://bb4d6m4teau0s"]
 
-[ext_resource type="Script" uid="uid://bx1jfyt8taan5" path="res://main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://bx1jfyt8taan5" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://dbei0pxhap1ly" path="res://Assets/bg11.png" id="2_48xlc"]
 [ext_resource type="FontFile" uid="uid://bp58uq735j2w1" path="res://Assets/Fonts/Enchanted Land.otf" id="3_1ehe0"]
 [ext_resource type="FontFile" uid="uid://teljycsysopq" path="res://Assets/Fonts/Barbarian.ttf" id="4_n45e2"]
@@ -30,15 +30,15 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5egv6"]
 bg_color = Color(0.20152646, 0.20152664, 0.20152646, 1)
 
-[node name="Main menu" type="Node2D"]
+[node name="Main menu" type="Node2D" unique_id=1828269854]
 script = ExtResource("1_28flt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1843237654]
 position = Vector2(962, 538.00006)
 scale = Vector2(0.9986979, 0.9958332)
 texture = ExtResource("2_48xlc")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=2129541229]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 410.0
@@ -46,7 +46,7 @@ offset_top = 136.0
 offset_right = 1560.0
 offset_bottom = 776.0
 
-[node name="Start" type="Button" parent="Control"]
+[node name="Start" type="Button" parent="Control" unique_id=223171106]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.4314236
@@ -67,7 +67,7 @@ action_mode = 0
 text = "--Play--"
 metadata/_edit_use_anchors_ = true
 
-[node name="Settings" type="Button" parent="Control"]
+[node name="Settings" type="Button" parent="Control" unique_id=1035872406]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.4435764
@@ -87,7 +87,7 @@ action_mode = 0
 text = "--Settings--"
 metadata/_edit_use_anchors_ = true
 
-[node name="Quit" type="Button" parent="Control"]
+[node name="Quit" type="Button" parent="Control" unique_id=1865797753]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.3940972
@@ -107,7 +107,7 @@ action_mode = 0
 text = "--Quit--"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=629714788]
 offset_left = 589.0
 offset_top = 64.0
 offset_right = 1573.0
@@ -118,7 +118,7 @@ theme_override_font_sizes/font_size = 150
 text = "Blades>"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="." unique_id=2097249436]
 offset_left = 860.0
 offset_top = 204.0
 offset_right = 1224.0
@@ -129,7 +129,7 @@ theme_override_font_sizes/font_size = 60
 text = "AGAINST"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="." unique_id=374160736]
 offset_left = 754.0
 offset_top = 291.0
 offset_right = 1414.0

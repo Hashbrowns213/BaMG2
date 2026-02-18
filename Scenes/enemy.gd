@@ -19,7 +19,7 @@ extends CharacterBody2D
 @onready var floor_check2: RayCast2D = $Floor2
 @onready var Hitbox: Area2D = $Hitbox
 @onready var Hurtbox: Area2D = $Hurtbox
-
+@onready var Collisionshape: CollisionShape2D = $CollisionShape2D
 var player: CharacterBody2D = null
 var direction := -1
 var is_attacking := false
@@ -166,4 +166,6 @@ func _die() -> void:
 		var coin = coin_scene.instantiate()
 		get_parent().add_child(coin)
 		coin.global_position = global_position
+		
+	emit_signal("died")
 	queue_free()

@@ -70,6 +70,7 @@ flip_h = true
 [node name="Interactables" parent="." unique_id=724194704 groups=["interactable"] instance=ExtResource("4_gejva")]
 collision_mask = 1
 dialogue_resource = ExtResource("5_ileeb")
+start_node = "start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables" unique_id=1844424039]
 position = Vector2(-29, 42)

@@ -157,19 +157,22 @@ layout_mode = 2
 texture = ExtResource("5_t1xeu")
 expand_mode = 2
 
-[node name="Coins" type="Node" parent="AbilityHotbar" unique_id=168600438]
+[node name="Coins" type="Control" parent="." unique_id=1933109023]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AbilityHotbar/Coins" unique_id=834661206]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins" unique_id=834661206]
 position = Vector2(1853.0001, 66)
 scale = Vector2(7.8125, 7.8125)
 sprite_frames = SubResource("SpriteFrames_yidpd")
 frame_progress = 0.26492047
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AbilityHotbar/Coins" unique_id=130319538]
-root_node = NodePath("../../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Coins" unique_id=130319538]
+root_node = NodePath("../..")
 
-[node name="CoinLabel" type="Label" parent="AbilityHotbar/Coins" unique_id=1457408085]
+[node name="CoinLabel" type="Label" parent="Coins" unique_id=1457408085]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 1751.0
 offset_top = 34.0
 offset_right = 1820.0

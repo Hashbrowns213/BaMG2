@@ -52,6 +52,9 @@ func _on_interaction_area_exited(area: Area2D) -> void:
 
 # --- Movement ---
 func _physics_process(delta: float) -> void:
+	if get_tree().paused:
+		return
+
 	if is_dead:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -83,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if Input.is_action_just_pressed("kys"):
-		_die()
+		SceneTransition.change_scene("res://Scenes/arena2.tscn")
 
 	if Input.is_action_just_pressed("Interact") and current_interactable:
 		current_interactable.interact()

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var dialogue_resource: DialogueResource
-@export var start_node := "start"
+@export var start_node := "Start"
 
 func _ready():
 	get_tree().root.get_node("/root/DialogueManager")

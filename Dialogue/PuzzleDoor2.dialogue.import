@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cbru2sd4qprk2"
+path="res://.godot/imported/PuzzleDoor2.dialogue-8b7c2251e6bc50fb009a4c410b55a5be.tres"
+
+[deps]
+
+source_file="res://Dialogue/PuzzleDoor2.dialogue"
+dest_files=["res://.godot/imported/PuzzleDoor2.dialogue-8b7c2251e6bc50fb009a4c410b55a5be.tres"]
+
+[params]
+
+defaults=true

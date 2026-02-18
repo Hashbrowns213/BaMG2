@@ -1,0 +1,15 @@
+[gd_resource type="Theme" format=3 uid="uid://boe6w3ar7o63e"]
+
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="1_yjsym"]
+
+[resource]
+Button/font_sizes/font_size = 25
+MarginContainer/constants/margin_bottom = -17
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 36
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 28
+RichTextLabel/fonts/bold_font = ExtResource("1_yjsym")
+RichTextLabel/fonts/normal_font = ExtResource("1_yjsym")

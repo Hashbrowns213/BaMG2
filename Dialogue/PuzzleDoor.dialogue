@@ -1,4 +1,8 @@
+~ init
+set State.door_correct1 = "False"
+set State.door_correct2 = "False"
 ~ Puzzle
+
 Knight: This door seems to be broken, how am i gonna get through?
 Trader: Hello there knight, this door requires advanced understanding of machines. Luckily, im here to help you.
 Trader: Machines understand words differently depending on their language, this door seems to be coded in Java.
@@ -10,6 +14,7 @@ Door:___ a = 7; ___ b = 4; ___ result = a + b * ?; System.out.println(result);
 - Int
 	set State.door_correct = "True"
 	Knight: This seems correct
+	=> END!
 - Float
 	Door: Wrong
 	Knight: I don't think this is right.
@@ -22,5 +27,55 @@ Door:___ a = 7; ___ b = 4; ___ result = a + b * ?; System.out.println(result);
 	Door: Wrong
 	Knight: Okay, i can't be THAT stupid.
 	=> Question 
+- Exit
+	=> END!
+
+
+~ Puzzle1
+Knight: This door seems to be broken
+Trader: This door requires fixing, like the last one, this one is coded in java. i've already told you what you need. 
+
+
+~ Question1
+Door: _____ temperature = 36.5f; _____ age = 18; _____ average = 92.75;
+- Int
+	Knight: I don't think this is it 
+	=> Question1
+
+- Float
+	set State.door_correct1 = "True"
+	Knight: I think this is right.
+	=> END!
+- String
+	Door: Wrong
+	Knight: Not it.
+	=> Question1 
+- Bool
+	Door: Wrong
+	Knight: Okay, i can't be THAT stupid.
+	=> Question1 
+- Exit
+	=> END!
+
+
+~ Puzzle2
+Knight: This door seems to be broken
+Trader: This door requires fixing, like the last one, this one is coded in java.
+~ Question2
+Door: player_username: ________ = "KnightCoder";  print("Welcome, " + player_username + "!")
+- Int
+	Knight: I don't think this is it 
+	=> Question2
+- Float
+	Knight: I don't think this is right.
+	=> Question2
+- String
+	set State.door_correct2 = "True"
+	Knight: I think this is right.
+	=> END!
+- Bool
+	Door: Wrong
+	Knight: Okay, i can't be THAT stupid.
+	=> Question2 
 - Exit
 	=> END!

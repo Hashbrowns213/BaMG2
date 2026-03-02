@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://bewxpvlbd5r0k"]
+
+[ext_resource type="Texture2D" uid="uid://cjseqv71m875q" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/569.png" id="1_aoupo"]
+
+[sub_resource type="GDScript" id="GDScript_aoupo"]
+script/source = "extends Area2D
+
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var collision: CollisionShape2D = $CollisionShape2D
+
+func _ready():
+	anim_player.play(\"Basic\")  # or whatever your animation is called
+	anim_player.animation_finished.connect(_on_animation_finished)
+	area_entered.connect(_on_area_entered)
+
+func _on_animation_finished(anim_name):
+	if anim_name == \"Basic\":
+		queue_free()
+
+func _on_area_entered(area):
+	if area.is_in_group(\"player_hitbox\"):
+		Stats.player_stats[\"health\"] -= 20
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ekpp2"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoupo"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekpp2"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0bc2"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2hse"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khf4b"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eavn0"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohosm"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1tvj"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(512, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qovvh"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdhsy"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(640, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxgvu"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md84f"]
+atlas = ExtResource("1_aoupo")
+region = Rect2(768, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmkmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoupo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekpp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0bc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2hse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khf4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eavn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohosm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1tvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qovvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdhsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxgvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md84f")
+}],
+"loop": false,
+"name": &"Basic",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_aoupo"]
+resource_name = "Basic"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 7, 8, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Basic"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ekpp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Basic"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k0bc2"]
+_data = {
+&"Basic": SubResource("Animation_aoupo"),
+&"RESET": SubResource("Animation_ekpp2")
+}
+
+[node name="BasicCast" type="Area2D" unique_id=640405154 groups=["enemy_hitbox"]]
+script = SubResource("GDScript_aoupo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=514015765]
+position = Vector2(-3, 5)
+shape = SubResource("CapsuleShape2D_ekpp2")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=890619290]
+sprite_frames = SubResource("SpriteFrames_vmkmv")
+animation = &"Basic"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1439618982]
+root_node = NodePath("../AnimatedSprite2D")
+libraries/ = SubResource("AnimationLibrary_k0bc2")

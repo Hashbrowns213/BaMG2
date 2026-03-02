@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://do7wsqm46548c"]
+
+[ext_resource type="Script" uid="uid://ypqutch71dc8" path="res://Scenes/controls.gd" id="1_q6vtx"]
+[ext_resource type="Shader" uid="uid://cfqt3ikkbwwij" path="res://Scenes/settings.gdshader" id="2_q6vtx"]
+[ext_resource type="Texture2D" uid="uid://cvg566sn8sq0i" path="res://Assets/bg2k.png" id="3_k4nhr"]
+[ext_resource type="FontFile" uid="uid://cmt8sfovh3uyw" path="res://Assets/Fonts/Blackletter.ttf" id="4_21kh3"]
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="5_q6vtx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aaqfp"]
+shader = ExtResource("2_q6vtx")
+
+[node name="Settings" type="Node2D" unique_id=975876215]
+script = ExtResource("1_q6vtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1001987064]
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_aaqfp")
+position = Vector2(968, 553)
+scale = Vector2(1.0010418, 1.0037038)
+texture = ExtResource("3_k4nhr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1098169449]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 1947.0
+offset_bottom = 1111.0
+color = Color(0.21176471, 0.21176471, 0.21176471, 0.6313726)
+
+[node name="Back" type="Button" parent="." unique_id=86874436]
+offset_left = 1513.0
+offset_top = 979.0
+offset_right = 1911.0
+offset_bottom = 1068.0
+theme_override_fonts/font = ExtResource("4_21kh3")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1878667480]
+offset_left = 117.0
+offset_top = 116.0
+offset_right = 1495.0
+offset_bottom = 1193.0
+theme_override_fonts/normal_font = ExtResource("5_q6vtx")
+theme_override_font_sizes/normal_font_size = 80
+text = "•	Controls
+
+A / D – Move left / right  
+Spacebar – Jump 
+Left Click – Basic attack (sword slash) 
+I, O, L – Each ability slot 
+E – Interact (terminals, NPCs) 
+F – Continue through the dialogue
+Esc – Pause menu
+"
+
+[connection signal="pressed" from="Back" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

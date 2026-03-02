@@ -1,11 +1,16 @@
 ~ BeforeDoor
 Trader: We meet again! This door requires fixing
 Trader: This door is coded in java like the last one, and since i've told you the information you require, go ahead and try to fix itt
+Trader: I see that you have some coins, you can give some of those and i will boost your fire power.
+
+~ shop1
+- shop
+	set Stats.open_shop_dialogue()
 - What was it again?
 	Trader: In Java, numbers are referred to Integers, sentences are Strings, Booleans or Bool are True or False, Char is a single letter, digit, punctuation mark, or symbol, and float are numbers with fractions.
 	=> BeforeDoor
-
 - Got it, thanks
 	Trader: You got it!
 	=> END!
 => END!
+

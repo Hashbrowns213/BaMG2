@@ -1,0 +1,41 @@
+~ shop
+Trader: What would you like to buy?
+- Spread Shot (15 coins)
+	=> spread
+- Heal (20 Coins)
+	=> heal 
+- Leave
+   set Stats.return_to_npc()
+    => END!
+
+
+
+
+~ spread
+Trader: This will give you the ability to shoot 3 projectiles spread out infront of you, Are you sure?
+- Yes
+	set Stats.try_buy_spread()
+	=> END!
+- No
+	=> shop
+
+~ heal
+Trader: This will give you the ability to Heal 25% of your health, Are you sure?
+- Yes
+	set Stats.try_buy_heal()
+	=> END!
+- No
+	=> shop
+
+~ success
+Trader: Great choice!
+=> END!
+~ notenough
+Trader: Sorry knight, I require more coins.
+=> END!
+~ already
+Trader: You already own this ability.
+=> END!
+- Leave
+    Trader: Come back anytime.
+    => END!

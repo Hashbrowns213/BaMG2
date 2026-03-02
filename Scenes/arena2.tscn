@@ -11,12 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://bp18qv2s5tl5r" path="res://Assets/553728043_775736545252802_9047089831805741285_n.png" id="9_8wqro"]
 [ext_resource type="PackedScene" uid="uid://dve58x3is5w8a" path="res://Scenes/killzone.tscn" id="10_lnybf"]
 [ext_resource type="PackedScene" uid="uid://ciht2ovqxekv0" path="res://Scenes/puzzle_door2.tscn" id="10_q66tl"]
+[ext_resource type="PackedScene" uid="uid://bfsawnjisljla" path="res://Scenes/AirborneEnemy.tscn" id="12_q35na"]
+[ext_resource type="PackedScene" uid="uid://5g8pdfo27vny" path="res://Scenes/Npc2.tscn" id="13_2nha5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2joa"]
-size = Vector2(636.5, 49)
+size = Vector2(1095, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csrox"]
-size = Vector2(20, 242)
+size = Vector2(25.5, 242)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stc3i"]
 size = Vector2(26, 81)
@@ -676,7 +678,6 @@ enemy_scene = ExtResource("2_2nha5")
 script = ExtResource("3_emqks")
 
 [node name="WaveMessage" type="Label" parent="ArenaUi" unique_id=361287108]
-visible = false
 offset_left = 624.0
 offset_top = 330.0
 offset_right = 1414.0
@@ -687,24 +688,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpawnArea" type="Area2D" parent="." unique_id=969856251]
-position = Vector2(440, -103)
+position = Vector2(438, -17)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="SpawnArea" unique_id=1574668941]
-position = Vector2(0, 76.5)
+position = Vector2(235.5, 1)
 shape = SubResource("RectangleShape2D_g2joa")
 
 [node name="Barrier" type="StaticBody2D" parent="." unique_id=685520525]
-position = Vector2(886, -51)
+position = Vector2(1239, -33)
 
 [node name="wol" type="CollisionShape2D" parent="Barrier" unique_id=788069408]
-position = Vector2(0, -1)
+position = Vector2(8, -15)
 shape = SubResource("RectangleShape2D_csrox")
 
 [node name="Trigger" type="Area2D" parent="." unique_id=1354748532]
-position = Vector2(58, -13)
+position = Vector2(17, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1632003473]
-position = Vector2(0, -6)
+position = Vector2(2, -14)
 shape = SubResource("RectangleShape2D_stc3i")
 
 [node name="TileMap" type="Node" parent="." unique_id=951592294]
@@ -720,10 +721,10 @@ tile_map_data = PackedByteArray("AAAAAAAAAAALABQAAAABAAAAAAALABQAAAACAAAAAAAKABQ
 tile_set = SubResource("TileSet_nnts3")
 
 [node name="Player" parent="." unique_id=1573866012 instance=ExtResource("7_lowr4")]
-position = Vector2(-177, -15)
+position = Vector2(-139, -18)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=83294167]
-position = Vector2(2, -11)
+position = Vector2(4, -19)
 zoom = Vector2(4, 4)
 limit_enabled = false
 limit_left = -9999718
@@ -769,3 +770,16 @@ shape = SubResource("WorldBoundaryShape2D_g2joa")
 
 [node name="Puzzle Door" parent="." unique_id=1228352101 instance=ExtResource("10_q66tl")]
 position = Vector2(1624, -30)
+
+[node name="Trader" parent="." unique_id=931357195 instance=ExtResource("13_2nha5")]
+top_level = true
+position = Vector2(1573, -62)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=110307048]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2102364427]
+position = Vector2(-215, -82)
+shape = SubResource("RectangleShape2D_csrox")
+
+[node name="CharacterBody2D" parent="StaticBody2D3" unique_id=1495693461 instance=ExtResource("12_q35na")]
+position = Vector2(813, -63)

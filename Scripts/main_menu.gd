@@ -10,7 +10,7 @@ func _exit_tree():
 	Hud.show()
 
 func _on_start_pressed() -> void:
-	SceneTransition.change_scene("res://Scenes/main.tscn")
+	SceneTransition.change_scene("res://Scenes/openingcutscene.tscn")
 
 
 func _on_settings_pressed() -> void:

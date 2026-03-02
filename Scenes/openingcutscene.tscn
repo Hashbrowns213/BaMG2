@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://exei44qxvums"]
+
+[ext_resource type="VideoStream" uid="uid://bfsm1ft72igdc" path="res://Assets/Videos/OpeningCutscene.ogv" id="1_jrlwp"]
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="2_ydo70"]
+
+[sub_resource type="GDScript" id="GDScript_5d3cf"]
+script/source = "extends Node2D
+func _ready():
+	# Replace 'YourAutoloadName' with the name in Project Settings
+	# Replace 'Container' with the name of the child node inside the CanvasLayer
+	Hud.hide()
+
+
+func _exit_tree():
+	# Make it visible again when leaving this scene
+	Hud.show()
+	
+
+
+func _on_button_pressed() -> void:
+	SceneTransition.change_scene(\"res://Scenes/main.tscn\")
+
+func _on_video_stream_player_finished() -> void:
+	SceneTransition.change_scene(\"res://Scenes/main.tscn\")
+"
+
+[node name="openingcutscene" type="Node2D" unique_id=1845257751]
+script = SubResource("GDScript_5d3cf")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=140688012]
+zoom = Vector2(0.5, 0.5)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=285217900]
+offset_left = -1919.0
+offset_top = -1081.0
+offset_right = 1921.0
+offset_bottom = 1079.0
+stream = ExtResource("1_jrlwp")
+autoplay = true
+
+[node name="Button" type="Button" parent="." unique_id=725711012]
+offset_left = 1484.0
+offset_top = 900.0
+offset_right = 1859.0
+offset_bottom = 1025.0
+theme_override_fonts/font = ExtResource("2_ydo70")
+theme_override_font_sizes/font_size = 100
+text = "SKIP"
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -79,3 +79,47 @@ Door: player_username: ________ = "KnightCoder";  print("Welcome, " + player_use
 	=> Question2 
 - Exit
 	=> END!
+
+
+~ Puzzle3
+Knight: This door seems to be broken
+Trader: This door requires fixing, like the last one, this one is coded in java.
+~ Question3
+Door: _____ isOnline = true; if(isOnline) { System.out.println("User is online"); }
+- Int
+	Knight: I don't think this is it 
+	=> Question3
+- Float
+	Knight: I don't think this is right.
+	=> Question3
+- String
+	I don't think it's it
+	=> Question3
+- Bool
+	set State.door_correct2 = "True"
+	Knight: I think this is right.
+	=> END! 
+- Exit
+	=> END!
+
+
+~ Puzzle4
+Knight: This door seems to be broken
+Trader: This door requires fixing, like the last one, this one is coded in java.
+~ Question4
+Door: _____ x = 10; _____ y = 3; _____ result = (double) x / y; System.out.println(result);
+- Int, Int, Float
+	set State.door_correct2 = "True"
+	Knight: I think this is right.
+	=> END! 
+- Float, Int, Float
+	Knight: I don't think this is right.
+	=> Question4
+- String
+	I don't think it's it
+	=> Question4
+- Bool
+	Not this one
+	=> Question4 
+- Exit
+	=> END!

@@ -37,4 +37,4 @@ func _open_door():
 
 	# Small delay before changing scene
 	await get_tree().create_timer(2.0).timeout
-	SceneTransition.change_scene("res://Scenes/boss_arena.tscn")
+	SceneTransition.change_scene("res://Scenes/arena3.tscn")

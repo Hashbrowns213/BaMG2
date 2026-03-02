@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c3vh1lvb55nlp"]
+
+[ext_resource type="Script" uid="uid://cma20k2jvklbg" path="res://Scripts/EscMenu.gd" id="1_cgmvo"]
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="2_vh8u0"]
+
+[node name="EscMenu" type="CanvasLayer" unique_id=2054500086]
+process_mode = 3
+script = ExtResource("1_cgmvo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=890929631]
+offset_right = 1924.0
+offset_bottom = 1086.0
+color = Color(0.9997275, 0.9839868, 0.97611636, 0.3764706)
+
+[node name="Control" type="Control" parent="." unique_id=2081418753]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenu" type="Button" parent="Control" unique_id=1063631349]
+process_mode = 3
+layout_mode = 0
+offset_left = 747.0
+offset_top = 372.0
+offset_right = 1177.8662
+offset_bottom = 552.0
+theme_override_fonts/font = ExtResource("2_vh8u0")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Back" type="Button" parent="Control" unique_id=509111347]
+process_mode = 3
+layout_mode = 0
+offset_left = 802.0
+offset_top = 595.0
+offset_right = 1121.0
+offset_bottom = 737.0
+theme_override_fonts/font = ExtResource("2_vh8u0")
+theme_override_font_sizes/font_size = 50
+text = "Resume
+"
+
+[node name="MainMenu2" type="Button" parent="Control" unique_id=438566681]
+process_mode = 3
+layout_mode = 0
+offset_left = 746.0
+offset_top = 159.0
+offset_right = 1176.8662
+offset_bottom = 339.0
+theme_override_fonts/font = ExtResource("2_vh8u0")
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/MainMenu2" to="." method="_on_main_menu_2_pressed"]

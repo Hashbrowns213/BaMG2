@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://b5l57v3al67tr"]
+
+[ext_resource type="Texture2D" uid="uid://thkev3b7aw3d" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/589.png" id="1_5g5cn"]
+
+[sub_resource type="GDScript" id="GDScript_5g5cn"]
+script/source = "extends Node2D
+
+@export var damage := 25
+
+@onready var hurtbox: Area2D = $Meleehurtboxes
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+
+func _ready():
+	# Connect damage
+	hurtbox.body_entered.connect(_on_body_entered)
+
+	# Play animation immediately
+	anim_player.play(\"MeleeCast\")  # MUST match animation name
+
+	# Delete when animation ends
+	anim_player.animation_finished.connect(_on_animation_finished)
+
+func _on_body_entered(body):
+	# Use the Stats autoload to deal damage instead of calling a function on the body
+	if body.is_in_group(\"player\"):
+		Stats.take_damage(damage)
+
+func _on_animation_finished(anim_name: String):
+	queue_free()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm10d"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6oal"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4knr1"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpx7e"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfipo"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac2dk"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlrif"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ief"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhirg"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(512, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saf2p"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y677"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(640, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfijw"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(704, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amibe"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(768, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcoe2"]
+atlas = ExtResource("1_5g5cn")
+region = Rect2(832, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0fbwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm10d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6oal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4knr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpx7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfipo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac2dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlrif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46ief")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhirg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saf2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y677")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfijw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amibe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcoe2")
+}],
+"loop": false,
+"name": &"MeleeCast",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_3b8pc"]
+resource_name = "MeleeCast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5, 7, 8, 10, 11, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"MeleeCast"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meleehurtboxes/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Meleehurtboxes/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Meleehurtboxes/CollisionShape2D3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_h6ty8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"MeleeCast"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meleehurtboxes/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Meleehurtboxes/CollisionShape2D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Meleehurtboxes/CollisionShape2D3:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ld65"]
+_data = {
+&"MeleeCast": SubResource("Animation_3b8pc"),
+&"RESET": SubResource("Animation_h6ty8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svc0u"]
+size = Vector2(76.73828, 37.186016)
+
+[node name="MeleeCast" type="Node2D" unique_id=1906719307]
+script = SubResource("GDScript_5g5cn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=72198725]
+position = Vector2(74, 74)
+scale = Vector2(3.3125, 3.3125)
+sprite_frames = SubResource("SpriteFrames_0fbwa")
+animation = &"MeleeCast"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1912939007]
+libraries/ = SubResource("AnimationLibrary_7ld65")
+
+[node name="Meleehurtboxes" type="Area2D" parent="." unique_id=1681492434 groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meleehurtboxes" unique_id=1655661511]
+position = Vector2(17.999998, 65)
+rotation = 0.7487463
+shape = SubResource("RectangleShape2D_svc0u")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Meleehurtboxes" unique_id=953131882]
+position = Vector2(71, 107)
+rotation = 0.598648
+shape = SubResource("RectangleShape2D_svc0u")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Meleehurtboxes" unique_id=1189231422]
+position = Vector2(137.63086, 130)
+shape = SubResource("RectangleShape2D_svc0u")
+disabled = true

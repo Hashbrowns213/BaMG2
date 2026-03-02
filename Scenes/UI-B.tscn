@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dgaioeafh146a"]
+
+[ext_resource type="Texture2D" uid="uid://cngf6sg8nfym6" path="res://UI-B/Untitled-222.png" id="1_7l4v3"]
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="2_mlc6i"]
+
+[sub_resource type="GDScript" id="GDScript_tajxh"]
+script/source = "extends CanvasLayer
+
+func _ready() -> void:
+	hide()
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
+# ========================
+# SHOW / HIDE
+# ========================
+
+func show_death_screen():
+	show()
+	get_tree().paused = true
+	Hud.hide()
+
+
+func hide_death_screen():
+	hide()
+	get_tree().paused = false
+	Hud.show()
+
+
+# ========================
+# BUTTONS
+# ========================
+
+func _on_try_again_pressed() -> void:
+	await change_scene_clean(\"res://Scenes/main.tscn\", true)
+
+
+func _on_quit_pressed() -> void:
+	await change_scene_clean(\"res://Scenes/main_menu.tscn\", false)
+
+
+# ========================
+# SAFE SCENE CHANGE
+# ========================
+
+func change_scene_clean(path: String, reset: bool) -> void:
+	hide()
+
+	# Unpause FIRST
+	get_tree().paused = false
+
+	# Let engine update pause state
+	await get_tree().process_frame
+
+	if reset:
+		reset_stats()
+
+	get_tree().change_scene_to_file(path)
+
+
+# ========================
+# RESET STATS
+# ========================
+
+func reset_stats():
+	Stats.player_stats[\"health\"] = 100
+	Stats.player_stats[\"lives\"] = 3
+	Stats.player_stats[\"coins\"] = 0
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w38r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tajxh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0mlcj"]
+
+[node name="Control" type="CanvasLayer" unique_id=492848425]
+process_mode = 3
+script = SubResource("GDScript_tajxh")
+
+[node name="Untitled222" type="Sprite2D" parent="." unique_id=1739300675]
+position = Vector2(956.50006, 541)
+scale = Vector2(1.0036458, 1)
+texture = ExtResource("1_7l4v3")
+
+[node name="ColorRect" type="ColorRect" parent="Untitled222" unique_id=801316581]
+offset_left = -1094.2798
+offset_top = -591.0
+offset_right = 1157.4111
+offset_bottom = 589.9999
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Label" type="Label" parent="Untitled222" unique_id=1735599097]
+offset_left = -579.20667
+offset_top = -513.0
+offset_right = 573.194
+offset_bottom = -112.00003
+theme_override_fonts/font = ExtResource("2_mlc6i")
+theme_override_font_sizes/font_size = 100
+text = "YOU LOST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="MenuButton" parent="." unique_id=1721706722]
+process_mode = 3
+offset_left = 384.0
+offset_top = 28.0
+offset_right = 392.0
+offset_bottom = 36.0
+
+[node name="TryAgain" type="Button" parent="MenuButton" unique_id=1288955932]
+layout_mode = 0
+offset_left = 403.8413
+offset_top = 447.99997
+offset_right = 764.8413
+offset_bottom = 530.0
+theme_override_colors/font_hover_color = Color(0.17827255, 0.5774739, 0.7237744, 1)
+theme_override_fonts/font = ExtResource("2_mlc6i")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5w38r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tajxh")
+text = "TRY AGAIN"
+
+[node name="Quit" type="Button" parent="MenuButton" unique_id=1208505352]
+layout_mode = 0
+offset_left = 412.8601
+offset_top = 551.99994
+offset_right = 773.8601
+offset_bottom = 633.99994
+theme_override_colors/font_hover_color = Color(0.8773462, 5.9922786e-06, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8549251, 0, 0.023028255, 1)
+theme_override_fonts/font = ExtResource("2_mlc6i")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5w38r")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0mlcj")
+text = "QUIT
+"
+
+[connection signal="pressed" from="MenuButton/TryAgain" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="MenuButton/TryAgain" to="MenuButton" method="_on_try_again_pressed"]
+[connection signal="pressed" from="MenuButton/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MenuButton/Quit" to="MenuButton" method="_on_quit_pressed"]

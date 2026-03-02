@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://clnhslyjvpihg"]
+
+[ext_resource type="Texture2D" uid="uid://duxbir3ycgqex" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/579.png" id="1_bn5sk"]
+
+[sub_resource type="GDScript" id="GDScript_nyyk5"]
+script/source = "extends Area2D
+
+@export var speed := 180.0
+@export var damage := 10
+
+var direction := Vector2.ZERO
+
+
+func _physics_process(delta):
+	position += direction * speed * delta
+
+
+func setup(target_position: Vector2):
+	direction = (target_position - global_position).normalized()
+	rotation = direction.angle()
+
+func _on_body_entered(body):
+	if body.is_in_group(\"player\"):
+		body.take_damage(damage) # make sure player has this function
+		queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hfgc"]
+size = Vector2(44, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn5sk"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(0, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyyk5"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(64, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hfgc"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(128, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7raim"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(192, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6duiw"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(256, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwnwp"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(320, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwry8"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(384, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkvl0"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(448, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwsc0"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(512, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3evj3"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(576, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq7by"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(640, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjipu"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(704, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f061p"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(768, 144, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofd8h"]
+atlas = ExtResource("1_bn5sk")
+region = Rect2(832, 144, 64, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm81y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn5sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyyk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hfgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7raim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6duiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwnwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwry8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkvl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwsc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3evj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq7by")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjipu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f061p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofd8h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="DroneProjectile" type="Area2D" unique_id=352827934 groups=["enemy_hitbox"]]
+script = SubResource("GDScript_nyyk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272696664]
+position = Vector2(7, -0.5)
+shape = SubResource("RectangleShape2D_7hfgc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163381566]
+position = Vector2(-2, 20)
+sprite_frames = SubResource("SpriteFrames_rm81y")
+frame_progress = 0.43936834
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1687017664]
+rect = Rect2(-10, -4, 39, 8)

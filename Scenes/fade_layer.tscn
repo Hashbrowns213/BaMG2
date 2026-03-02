@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://xdjuyy7s5b5m" path="res://Scripts/SceneTransition.gd" id="1_unlr0"]
 
 [node name="FadeLayer" type="CanvasLayer" unique_id=889892968]
+process_mode = 3
 script = ExtResource("1_unlr0")
 
 [node name="ColorFade" type="ColorRect" parent="." unique_id=1416814618]

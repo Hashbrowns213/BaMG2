@@ -66,8 +66,8 @@ layer = 100
 script = ExtResource("1_36de5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1195747035]
-position = Vector2(136, 348)
-scale = Vector2(14.387498, 14.3875)
+position = Vector2(152, 436)
+scale = Vector2(16.419325, 16.892187)
 sprite_frames = SubResource("SpriteFrames_v42gu")
 
 [node name="Balloon" type="Control" parent="." unique_id=692658174]
@@ -80,6 +80,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_1337t")
 
+[node name="ColorRect" type="ColorRect" parent="Balloon" unique_id=520063583]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 742.0
+offset_right = 1395.0
+offset_bottom = 1073.0
+color = Color(0, 0, 0, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=988604985]
 material = SubResource("CanvasItemMaterial_r5ei8")
 layout_mode = 1
@@ -87,10 +95,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = -272.0
-offset_right = -518.0
-offset_bottom = -24.0
+offset_left = 181.0
+offset_top = -369.0
+offset_right = -521.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_1337t")
@@ -103,18 +111,11 @@ mouse_filter = 1
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=797057764]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=520063583]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1675241178]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=183071398]
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=183071398]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1724184353]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1724184353]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -124,13 +125,16 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=340070192 instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=340070192 instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_1337t")
 theme_override_font_sizes/normal_font_size = 44
 text = "Dialogue..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1675241178]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=247822920]
 custom_minimum_size = Vector2(20, 10)
@@ -153,10 +157,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 447.0
-offset_top = 345.0
-offset_right = 901.0
-offset_bottom = 400.0
+offset_left = 444.0
+offset_top = 197.0
+offset_right = 900.0
+offset_bottom = 278.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -170,7 +174,7 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 theme = ExtResource("2_1337t")
 theme_override_fonts/font = ExtResource("5_kmygl")
-theme_override_font_sizes/font_size = 29
+theme_override_font_sizes/font_size = 45
 text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=343595276]
@@ -180,5 +184,5 @@ unique_name_in_owner = true
 stream = ExtResource("7_r5ei8")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

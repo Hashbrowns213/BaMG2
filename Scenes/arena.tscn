@@ -9,12 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dervt8npr2p1g" path="res://Assets/[FREE] Industrial Tileset/FREE/5. Industrial Tileset - Starter Pack 32p/1_Industrial_Tileset_1B.png" id="6_2cush"]
 [ext_resource type="PackedScene" uid="uid://dve58x3is5w8a" path="res://Scenes/killzone.tscn" id="6_csrox"]
 [ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="6_g2joa"]
+[ext_resource type="Texture2D" uid="uid://duxbir3ycgqex" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/579.png" id="8_5pgm5"]
 [ext_resource type="Script" uid="uid://da8gn71gmnwcn" path="res://Scenes/arena_ui.gd" id="8_xrytr"]
 [ext_resource type="PackedScene" uid="uid://cw1hybob4kdd3" path="res://Scenes/puzzle_door1.tscn" id="12_2cush"]
 [ext_resource type="PackedScene" uid="uid://degvjy5avaqoy" path="res://Scenes/Npc1.tscn" id="12_5pgm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2joa"]
-size = Vector2(636.5, 58)
+size = Vector2(636.5, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csrox"]
 size = Vector2(20, 242)
@@ -663,6 +664,162 @@ pattern_1 = SubResource("TileMapPattern_csrox")
 pattern_2 = SubResource("TileMapPattern_g2joa")
 pattern_3 = SubResource("TileMapPattern_xrytr")
 
+[sub_resource type="GDScript" id="GDScript_vd3os"]
+script/source = "extends Area2D
+
+@export var speed := 700.0
+@export var damage := 20
+@export var lifetime := 2.0
+
+var direction := Vector2.RIGHT
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+	
+	# Auto delete after time
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+
+
+func _physics_process(delta):
+	position += direction * speed * delta
+
+
+func setup(dir: Vector2):
+	direction = dir.normalized()
+	rotation = direction.angle()
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"enemy\"):
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y0hk"]
+size = Vector2(33, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2orj"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(0, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50db3"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(64, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ii0"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(128, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iicvv"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(192, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0r81"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(256, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htt1q"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(320, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228cm"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(384, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgg84"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(448, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3txes"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(512, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppe2v"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(576, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s8ey"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(640, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7sjn"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(704, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqbvv"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(768, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7nmy"]
+atlas = ExtResource("8_5pgm5")
+region = Rect2(832, 0, 64, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1yx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2orj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50db3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ii0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iicvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0r81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htt1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgg84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3txes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppe2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s8ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7sjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqbvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7nmy")
+}],
+"loop": false,
+"name": &"projectile",
+"speed": 10.0
+}]
+
+[sub_resource type="PackedScene" id="PackedScene_5pgm5"]
+resource_local_to_scene = true
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("proj_spread", "script", "player_hitbox", "Area2D", "CollisionShape2D", "position", "shape", "AnimatedSprite2D", "sprite_frames", "animation", "frame", "frame_progress", "AnimationPlayer", "root_node", "VisibleOnScreenNotifier2D", "rect"),
+"node_count": 5,
+"node_ids": PackedInt32Array(1846810516, 2145363863, 101191741, 1438103086, 1578043726),
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 1, 1, 0, 1, 2, 0, 0, 4, 4, -1, 2, 5, 1, 6, 2, 0, 0, 0, 7, 7, -1, 4, 8, 3, 9, 4, 10, 5, 11, 6, 0, 0, 0, 12, 12, -1, 1, 13, 7, 0, 0, 0, 14, 14, -1, 1, 15, 8, 0),
+"variants": [SubResource("GDScript_vd3os"), Vector2(11.5, -4.5), SubResource("RectangleShape2D_8y0hk"), SubResource("SpriteFrames_s1yx0"), &"projectile", 13, 1.0, NodePath("../AnimatedSprite2D"), Rect2(-10, -10, 37, 11)],
+"version": 3
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyva0"]
 size = Vector2(101.93435, 28)
 
@@ -691,7 +848,7 @@ vertical_alignment = 1
 position = Vector2(440, -103)
 
 [node name="SpawnArea" type="CollisionShape2D" parent="SpawnArea" unique_id=1574668941]
-position = Vector2(0, 72)
+position = Vector2(0, 84.5)
 shape = SubResource("RectangleShape2D_g2joa")
 
 [node name="Barrier" type="StaticBody2D" parent="." unique_id=685520525]
@@ -721,7 +878,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAAALABQAAAABAAAAAAALABQAAAACAAAAAAAKABQ
 tile_set = SubResource("TileSet_nnts3")
 
 [node name="Player" parent="." unique_id=1573866012 instance=ExtResource("2_nnts3")]
-position = Vector2(-177, -15)
+position = Vector2(-148, -19)
+ability_projectile_scene = SubResource("PackedScene_5pgm5")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=83294167]
 position = Vector2(2, -11)
@@ -782,3 +940,9 @@ text = "00.0"
 [node name="Trader" parent="." unique_id=931357195 instance=ExtResource("12_5pgm5")]
 top_level = true
 position = Vector2(1580, -60)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=60560612]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1857679252]
+position = Vector2(-210, -82)
+shape = SubResource("RectangleShape2D_csrox")

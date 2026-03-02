@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dbujmhjt6to20"]
+
+[ext_resource type="Texture2D" uid="uid://hcy0ivdaegn6" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/588.png" id="1_x8bce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2fee"]
+atlas = ExtResource("1_x8bce")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh5k6"]
+atlas = ExtResource("1_x8bce")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q30n"]
+atlas = ExtResource("1_x8bce")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bakw"]
+atlas = ExtResource("1_x8bce")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djib4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2fee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh5k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q30n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bakw")
+}],
+"loop": true,
+"name": &"Lockon",
+"speed": 10.0
+}]
+
+[node name="Lock on" type="Area2D" unique_id=478252884]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1309793373]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1101932670]
+sprite_frames = SubResource("SpriteFrames_djib4")
+animation = &"Lockon"
+frame_progress = 0.027750213
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1541125859]

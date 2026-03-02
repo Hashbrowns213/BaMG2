@@ -5,11 +5,13 @@
 [resource]
 Button/font_sizes/font_size = 25
 MarginContainer/constants/margin_bottom = -17
-MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 0
-MarginContainer/constants/margin_top = 36
+MarginContainer/constants/margin_top = 28
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 8
+RichTextLabel/constants/paragraph_separation = 1
 RichTextLabel/font_sizes/normal_font_size = 28
 RichTextLabel/fonts/bold_font = ExtResource("1_yjsym")
 RichTextLabel/fonts/normal_font = ExtResource("1_yjsym")

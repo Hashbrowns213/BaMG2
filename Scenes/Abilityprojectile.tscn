@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://cpscgaaby38ns"]
+
+[ext_resource type="Texture2D" uid="uid://duxbir3ycgqex" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/579.png" id="1_vi2hb"]
+
+[sub_resource type="GDScript" id="GDScript_vd3os"]
+script/source = "extends Area2D
+
+@export var speed := 700.0
+@export var damage := 2
+@export var lifetime := 2.0
+
+var direction := Vector2.RIGHT
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+	
+	# Auto delete after time
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+
+
+func _physics_process(delta):
+	position += direction * speed * delta
+
+
+func setup(dir: Vector2):
+	direction = dir.normalized()
+	rotation = direction.angle()
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"enemy\"):
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y0hk"]
+size = Vector2(33, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2orj"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(0, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50db3"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(64, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ii0"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(128, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iicvv"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(192, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0r81"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(256, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htt1q"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(320, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228cm"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(384, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgg84"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(448, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3txes"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(512, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppe2v"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(576, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s8ey"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(640, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7sjn"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(704, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqbvv"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(768, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7nmy"]
+atlas = ExtResource("1_vi2hb")
+region = Rect2(832, 0, 64, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1yx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2orj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50db3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ii0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iicvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0r81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htt1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgg84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3txes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppe2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s8ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7sjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqbvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7nmy")
+}],
+"loop": false,
+"name": &"projectile",
+"speed": 10.0
+}]
+
+[node name="proj_spread" type="Area2D" unique_id=1846810516 groups=["Projectile"]]
+script = SubResource("GDScript_vd3os")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145363863]
+position = Vector2(11.5, -4.5)
+shape = SubResource("RectangleShape2D_8y0hk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=101191741]
+sprite_frames = SubResource("SpriteFrames_s1yx0")
+animation = &"projectile"
+frame = 13
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1438103086]
+root_node = NodePath("../AnimatedSprite2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1578043726]
+rect = Rect2(-10, -10, 37, 11)

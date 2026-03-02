@@ -16,9 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://bq0qoat2w42bv" path="res://Scenes/breakable_wall.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://dxbjanh2t6s6x" path="res://Scenes/Npc.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dr4b1nufofp1q" path="res://Scenes/coin.tscn" id="11_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://degvjy5avaqoy" path="res://Scenes/Npc1.tscn" id="12_fevyy"]
 [ext_resource type="Texture2D" uid="uid://bcgm6s1v7qwdg" path="res://Assets/LAB.png" id="13_b3802"]
+[ext_resource type="Texture2D" uid="uid://duxbir3ycgqex" path="res://Assets/Effect and FX Pixel Part 12 Free/Effect and FX Pixel Part 12 Free/579.png" id="13_hibaj"]
 [ext_resource type="PackedScene" uid="uid://cw803uu7u3elh" path="res://Scenes/puzzle_door.tscn" id="18_b3802"]
-[ext_resource type="PackedScene" uid="uid://bfsawnjisljla" path="res://Scenes/AirborneEnemy.tscn" id="19_fevyy"]
+[ext_resource type="PackedScene" uid="uid://bfsawnjisljla" path="res://Scenes/AirborneEnemy.tscn" id="21_pdsj5"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_6bp64"]
 tile_data = PackedInt32Array(0, 1310720, 14, 65536, 1310720, 15, 1, 1376256, 14, 65537, 1376256, 15)
@@ -840,11 +842,185 @@ pattern_2 = SubResource("TileMapPattern_ynf5e")
 pattern_3 = SubResource("TileMapPattern_hptm8")
 pattern_4 = SubResource("TileMapPattern_d1ilt")
 
+[sub_resource type="GDScript" id="GDScript_vd3os"]
+script/source = "extends Area2D
+
+@export var speed := 700.0
+@export var damage := 20
+@export var lifetime := 2.0
+
+var direction := Vector2.RIGHT
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+	
+	# Auto delete after time
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+
+
+func _physics_process(delta):
+	position += direction * speed * delta
+
+
+func setup(dir: Vector2):
+	direction = dir.normalized()
+	rotation = direction.angle()
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"enemy\"):
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y0hk"]
+size = Vector2(33, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2orj"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(0, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50db3"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(64, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1ii0"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(128, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iicvv"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(192, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0r81"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(256, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htt1q"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(320, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228cm"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(384, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgg84"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(448, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3txes"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(512, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppe2v"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(576, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s8ey"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(640, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7sjn"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(704, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqbvv"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(768, 0, 64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7nmy"]
+atlas = ExtResource("13_hibaj")
+region = Rect2(832, 0, 64, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1yx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2orj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50db3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1ii0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iicvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0r81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htt1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgg84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3txes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppe2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s8ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7sjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqbvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7nmy")
+}],
+"loop": false,
+"name": &"projectile",
+"speed": 10.0
+}]
+
+[sub_resource type="PackedScene" id="PackedScene_ee4r6"]
+resource_local_to_scene = true
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [],
+"names": PackedStringArray("proj_spread", "script", "player_hitbox", "Area2D", "CollisionShape2D", "position", "shape", "AnimatedSprite2D", "sprite_frames", "animation", "frame", "frame_progress", "AnimationPlayer", "root_node", "VisibleOnScreenNotifier2D", "rect"),
+"node_count": 5,
+"node_ids": PackedInt32Array(1846810516, 2145363863, 101191741, 1438103086, 1578043726),
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 1, 1, 0, 1, 2, 0, 0, 4, 4, -1, 2, 5, 1, 6, 2, 0, 0, 0, 7, 7, -1, 4, 8, 3, 9, 4, 10, 5, 11, 6, 0, 0, 0, 12, 12, -1, 1, 13, 7, 0, 0, 0, 14, 14, -1, 1, 15, 8, 0),
+"variants": [SubResource("GDScript_vd3os"), Vector2(11.5, -4.5), SubResource("RectangleShape2D_8y0hk"), SubResource("SpriteFrames_s1yx0"), &"projectile", 13, 1.0, NodePath("../AnimatedSprite2D"), Rect2(-10, -10, 37, 11)],
+"version": 3
+}
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lquwl"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_b3802"]
 a = Vector2(-89, 1)
 b = Vector2(170.37123, 16.237244)
+
+[sub_resource type="GDScript" id="GDScript_b3802"]
+script/source = "extends Area2D
+
+@export var target_spawn: NodePath
+
+func _ready():
+	body_entered.connect(_on_body_entered)
+
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"player\"):
+		var spawn = get_node(target_spawn)
+		body.global_position = spawn.global_position
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevyy"]
+size = Vector2(29, 64)
 
 [node name="Main" type="Node2D" unique_id=471680722]
 
@@ -897,12 +1073,12 @@ text = "[SPACE] to jump"
 position = Vector2(-588, -33)
 
 [node name="Label3" type="Label" parent="TileMap/Ground" unique_id=594979132]
-offset_left = -681.0
-offset_top = -76.0
+offset_left = -680.0
+offset_top = -84.0
 offset_right = -482.0
 offset_bottom = -53.0
 theme_override_fonts/font = ExtResource("7_wsu2k")
-text = "[Right-Click] or [J] to attack"
+text = " [J] to attack"
 
 [node name="Label4" type="Label" parent="TileMap/Ground" unique_id=211034]
 offset_left = 394.0
@@ -916,10 +1092,76 @@ text = "           [E] To interact
 [node name="CoinLib" type="Node" parent="TileMap/Ground" unique_id=251970640]
 
 [node name="Coin4" parent="TileMap/Ground/CoinLib" unique_id=917255664 instance=ExtResource("11_h1bgf")]
-position = Vector2(-1374, -14)
+visible = false
+position = Vector2(-1354, -18)
+
+[node name="Coin" parent="TileMap/Ground/CoinLib" unique_id=717429653 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1325, -17)
+
+[node name="Coin2" parent="TileMap/Ground/CoinLib" unique_id=726367339 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1339, -15)
+
+[node name="Coin3" parent="TileMap/Ground/CoinLib" unique_id=1193840235 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1305, -14)
+
+[node name="Coin5" parent="TileMap/Ground/CoinLib" unique_id=115196463 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1297, -14)
+
+[node name="Coin6" parent="TileMap/Ground/CoinLib" unique_id=167522193 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1324, -18)
+
+[node name="Coin7" parent="TileMap/Ground/CoinLib" unique_id=1669526669 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1310, -29)
+
+[node name="Coin8" parent="TileMap/Ground/CoinLib" unique_id=105858626 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1339, -25)
+
+[node name="Coin9" parent="TileMap/Ground/CoinLib" unique_id=867341390 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1325, -24)
+
+[node name="Coin10" parent="TileMap/Ground/CoinLib" unique_id=1810617958 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1333, -19)
+
+[node name="Coin11" parent="TileMap/Ground/CoinLib" unique_id=1312605171 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1308, -29)
+
+[node name="Coin12" parent="TileMap/Ground/CoinLib" unique_id=198473189 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1328, -43)
+
+[node name="Coin13" parent="TileMap/Ground/CoinLib" unique_id=392036206 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1307, -22)
+
+[node name="Coin14" parent="TileMap/Ground/CoinLib" unique_id=1179037717 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1300, -20)
+
+[node name="Coin15" parent="TileMap/Ground/CoinLib" unique_id=445633409 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1329, -22)
+
+[node name="Coin16" parent="TileMap/Ground/CoinLib" unique_id=2090896536 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1362, -33)
+
+[node name="Coin17" parent="TileMap/Ground/CoinLib" unique_id=200364253 instance=ExtResource("11_h1bgf")]
+visible = false
+position = Vector2(-1339, -38)
 
 [node name="Player" parent="." unique_id=931929470 instance=ExtResource("1_ig7tw")]
 position = Vector2(-1514, -21)
+ability_projectile_scene = SubResource("PackedScene_ee4r6")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1090637913]
 position = Vector2(3, -19)
@@ -940,7 +1182,7 @@ vertical_smooth_speed = 4.0
 top_level = true
 light_mask = 2
 visibility_layer = 2
-offset_left = -445.0
+offset_left = -459.0
 offset_top = -233.0
 offset_right = 150.0
 offset_bottom = 338.0
@@ -968,8 +1210,8 @@ texture = ExtResource("1_6bp64")
 motion_scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=972585776]
-position = Vector2(-448, 50.000004)
-scale = Vector2(0.83004695, 0.67852855)
+position = Vector2(-440.71436, 50.000004)
+scale = Vector2(0.8437417, 0.67852855)
 texture = ExtResource("13_b3802")
 
 [node name="Trader" parent="." unique_id=632414193 instance=ExtResource("9_ynf5e")]
@@ -987,7 +1229,7 @@ position = Vector2(308, -13)
 [node name="Puzzle Door" parent="." unique_id=1228352101 instance=ExtResource("18_b3802")]
 position = Vector2(2226, -30)
 
-[node name="Trader2" parent="." unique_id=931357195 instance=ExtResource("9_ynf5e")]
+[node name="Trader2" parent="." unique_id=348283609 instance=ExtResource("9_ynf5e")]
 top_level = true
 light_mask = 0
 visibility_layer = 512
@@ -1010,5 +1252,18 @@ rotation = 1.5166911
 shape = SubResource("SegmentShape2D_b3802")
 one_way_collision = true
 
-[node name="CharacterBody2D" parent="." unique_id=1495693461 instance=ExtResource("19_fevyy")]
-position = Vector2(-1123, -53)
+[node name="Teleport" type="Area2D" parent="." unique_id=1800535920]
+position = Vector2(-482, -38)
+script = SubResource("GDScript_b3802")
+target_spawn = NodePath("../Spawnpoint")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport" unique_id=1957422284]
+position = Vector2(4.5, 5)
+shape = SubResource("RectangleShape2D_fevyy")
+
+[node name="Trader3" parent="." unique_id=931357195 instance=ExtResource("12_fevyy")]
+visible = false
+position = Vector2(-1189, -65)
+
+[node name="CharacterBody2D" parent="." unique_id=1495693461 instance=ExtResource("21_pdsj5")]
+position = Vector2(-1185, -65)

@@ -145,20 +145,42 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		_die()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hitbox") and not is_hit and not is_dead:
-		health -= Stats.player_stats["attack"]  # ✅ LOCAL HEALTH
-		print("Enemy HP:", health)
+	if is_dead or is_hit:
+		return
 
-		is_hit = true
-		is_attacking = false
+	var damage: int = 0
 
-		if health <= 0:
-			is_dead = true
-			Hitbox.monitoring = false
-			Hurtbox.monitoring = false
-			_play_animation("death")
+	if area.is_in_group("player_hitbox"):
+		# Normal melee/ability attack
+		damage = Stats.player_stats["attack"]
+
+	elif area.is_in_group("Projectile"):
+		# Projectile attack: get the damage from Stats based on projectile name
+		if Stats.player_stats.has("Projectile"):
+			damage = Stats.player_stats["Projectile"]
 		else:
-			_play_animation("hit")
+			# fallback in case the projectile name isn't in Stats
+			damage = Stats.player_stats["attack"]
+
+	else:
+		# Not a player attack or projectile, ignore
+		return
+
+	# Apply damage
+	health -= damage
+	print("Enemy HP:", health, "(-" + str(damage) + ")")
+
+	is_hit = true
+	is_attacking = false
+
+	if health <= 0:
+		is_dead = true
+		Hitbox.monitoring = false
+		Hurtbox.monitoring = false
+		_play_animation("death")
+	else:
+		_play_animation("hit")
+
 
 func _die() -> void:
 	print("Enemy died")

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://xtvx7g514ksj"]
+
+[ext_resource type="FontFile" uid="uid://ldobyeql0j1u" path="res://Assets/Fonts/Moonstrike.otf" id="1_1nna6"]
+[ext_resource type="Texture2D" uid="uid://b317gwkiliqt6" path="res://Assets/MIssingHealth (2).png" id="2_gl5wg"]
+
+[sub_resource type="GDScript" id="GDScript_1nna6"]
+script/source = "extends CanvasLayer
+
+@onready var bar = $Control/TextureProgressBar
+
+var boss = null
+
+func setup(boss_node):
+	boss = boss_node
+	bar.max_value = boss.max_health
+	bar.value = boss.health
+	
+	# Connect signals if you have them
+	if boss.has_signal(\"health_changed\"):
+		boss.health_changed.connect(update_health)
+	if boss.has_signal(\"boss_died\"):
+		boss.boss_died.connect(hide_ui)
+
+	fade_in()
+	
+func update_health(current):
+	bar.value = current
+
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property($Control, \"modulate:a\", 1.0, 0.6)
+
+func hide_ui():
+	var tween = create_tween()
+	tween.tween_property($Control, \"modulate:a\", 0.0, 0.6)
+"
+
+[node name="BossUI" type="CanvasLayer" unique_id=1238601103]
+script = SubResource("GDScript_1nna6")
+
+[node name="Control" type="Control" parent="." unique_id=889033712]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 914.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1429759786]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 53.0
+offset_right = 744.0
+offset_bottom = 95.70833
+theme_override_fonts/font = ExtResource("1_1nna6")
+theme_override_font_sizes/font_size = 50
+text = "Lord rodamA"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control" unique_id=1620551212]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 61.0
+offset_right = 1533.1257
+offset_bottom = 191.0
+max_value = 30.0
+value = 30.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_gl5wg")

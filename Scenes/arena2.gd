@@ -4,7 +4,7 @@ extends Node2D
 ## SETTINGS
 ## ===============================
 @export var enemy_scene: PackedScene
-@export var max_enemies: int = 15
+@export var max_enemies: int = 13
 @export var spawn_delay: float = 2.0
 
 ## ===============================
